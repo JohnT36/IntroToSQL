@@ -18,6 +18,10 @@ namespace IntroToSQL
         {
             return _connection.Query<Department>("SELECT * FROM departments;");
         }
-        
+        public void UpdateDepartment(int id, string newName)
+        {
+            _connection.Execute("UPDATE departments SET Name = @newName WHERE DepartmentID = @id;", new { newName = newName, id = id });
+        }
+
     }
 }
