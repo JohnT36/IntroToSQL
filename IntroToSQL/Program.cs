@@ -17,7 +17,18 @@ namespace IntroToSQL
                 .Build();
 
             string connString = config.GetConnectionString("DefaultConnection");
+
             IDbConnection conn = new MySqlConnection(connString);
+
+            var repo = new DapperDepartmentRepository(conn);
+
+            var departments = repo.GetAllDepartments();
+
+            foreach (var department in departments)
+            {
+                Console.WriteLine($"{department.DepartmentID} {department.Name}");
+            }
+
         }
     }
 }

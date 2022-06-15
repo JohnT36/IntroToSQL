@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -15,8 +16,8 @@ namespace IntroToSQL
         }
         public IEnumerable<Department> GetAllDepartments()
         {
-            return 
+            return _connection.Query<Department>("SELECT * FROM departments;");
         }
-
+        
     }
 }
