@@ -14,6 +14,13 @@ namespace IntroToSQL
         {
             _connection = connection;
         }
+
+        public void CreateDepartment(string name)
+        {
+            _connection.Execute("INSERT INTO departments (name) VALUES (@name);",
+                new { name });
+        }
+
         public IEnumerable<Department> GetAllDepartments()
         {
             return _connection.Query<Department>("SELECT * FROM departments;");

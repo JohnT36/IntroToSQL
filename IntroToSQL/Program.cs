@@ -35,7 +35,7 @@ namespace IntroToSQL
                 Console.WriteLine($"{department.DepartmentID} {department.Name}");
             }
             var repoP = new DapperProductRepository(conn);
-
+            repoP.CreateProduct("Turtleshoes", 200, 7);
 
 
             var products = repoP.GetAllProducts();
@@ -50,7 +50,7 @@ namespace IntroToSQL
 
             foreach (var product in products)
             {
-                if (product.ProductID > 890)
+                if (product.ProductID > 887)
                 {
                     Console.WriteLine(product.ProductID);
                 }

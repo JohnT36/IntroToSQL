@@ -7,6 +7,7 @@ namespace IntroToSQL
     public interface IDepartmentRepository 
     {
         public IEnumerable<Department> GetAllDepartments();
+        void CreateDepartment(string name);
 
     }
 }
