@@ -3,6 +3,7 @@ using System.Data;
 using System.IO;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 
 namespace IntroToSQL
@@ -20,14 +21,36 @@ namespace IntroToSQL
 
             IDbConnection conn = new MySqlConnection(connString);
 
-            var repo = new DapperDepartmentRepository(conn);
+           // var repoD = new DapperDepartmentRepository(conn);
+           //
+           // var departments = repoD.GetAllDepartments();
+           //
+           // foreach (var department in departments)
+           // {
+           //     Console.WriteLine($"{department.DepartmentID} {department.Name}");
+           // }
+            var repoP = new DapperProductRepository(conn);
 
-            var departments = repo.GetAllDepartments();
-
-            foreach (var department in departments)
+            var products = repoP.GetAllProducts();
+            
+            foreach (var product in products)
             {
-                Console.WriteLine($"{department.DepartmentID} {department.Name}");
+                Console.WriteLine($" {product.ProductID}, {product.Name}, {product.Price}");
             }
+
+            
+           
+
+            foreach (var product in products)
+            {
+                if (product.ProductID > 890)
+                {
+                    Console.WriteLine(product.ProductID);
+                }
+            }
+
+
+
 
         }
     }
